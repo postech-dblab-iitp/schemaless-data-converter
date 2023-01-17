@@ -1,6 +1,7 @@
 import sys
 import csv
 import yaml
+import os
 
 def printAndExit(print_string):
     print(print_string)
@@ -78,6 +79,8 @@ def validateArguments():
         print('Invalid arguments')
         sys.exit()
 
+
+
 ### MAIN FUNCTION ###
 validateArguments()
 configuration_file_path = sys.argv[1]
@@ -87,4 +90,14 @@ with open(configuration_file_path, "r") as configuration_file:
     schema_file_path = configuration_yaml['schema_file']
     with open(schema_file_path, "r") as schema_file:
         schema_yaml = yaml.load(schema_file)
+        
+        # Validate configuration file
         validateConfigurationFile(configuration_yaml, schema_yaml)
+        
+        # Create output folder
+        title = configuration_yaml['title']
+        output_folders_path = configuration_yaml['output_folders_path']
+        output_path = os.path.join(output_folders_path, title)
+        os.mkdir(output_path)
+        
+        

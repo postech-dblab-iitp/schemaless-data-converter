@@ -2,7 +2,7 @@ title: test
 table_name: lineitem
 schema_file: ./schemas/tpch/lineitem.yaml
 data_file: ./data/tpch
-output_path: ./results
+output_folders_path: ./results
 partitions: [p1, p2]
 p1:
   portion: 50
