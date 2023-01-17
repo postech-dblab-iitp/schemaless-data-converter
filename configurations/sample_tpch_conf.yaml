@@ -1,7 +1,7 @@
 title: test
 table_name: lineitem
 schema_file: ./schemas/tpch/lineitem.yaml
-data_file: ./data/tpch
+data_file_path: ./data/tpch/lineitem.csv
 output_folders_path: ./results
 partitions: [p1, p2]
 p1:

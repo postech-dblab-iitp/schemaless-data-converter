@@ -2,6 +2,7 @@ import sys
 import csv
 import yaml
 import os
+import random
 
 def printAndExit(print_string):
     print(print_string)
@@ -79,17 +80,20 @@ def validateArguments():
         print('Invalid arguments')
         sys.exit()
 
-
-
+#####################
 ### MAIN FUNCTION ###
+#####################
 validateArguments()
 configuration_file_path = sys.argv[1]
 
+# Get configuration file
 with open(configuration_file_path, "r") as configuration_file:
     configuration_yaml = yaml.load(configuration_file)
+    # Get table schema file
     schema_file_path = configuration_yaml['schema_file']
     with open(schema_file_path, "r") as schema_file:
         schema_yaml = yaml.load(schema_file)
+        schema_columns = schema_yaml['columns']
         
         # Validate configuration file
         validateConfigurationFile(configuration_yaml, schema_yaml)
@@ -98,6 +102,57 @@ with open(configuration_file_path, "r") as configuration_file:
         title = configuration_yaml['title']
         output_folders_path = configuration_yaml['output_folders_path']
         output_path = os.path.join(output_folders_path, title)
+        if os.path.exists(output_path):
+            os.system('rm -rf ' + output_path)
         os.mkdir(output_path)
         
+        # Read data file and store tuples in an array
+        original_tuples = []
+        data_file_path = configuration_yaml['data_file_path']
+        with open(data_file_path) as data_file:
+            data_file_reader = csv.reader(data_file, delimiter='|')
+            for row in data_file_reader:
+                if len(row) != len(schema_columns): printAndExit('Invalid row!')
+                original_tuples.append(row)
+                
+        # Create an index list
+        num_tuples = len(original_tuples)
+        index_list = list(range(0, num_tuples))
         
+        # Shuffle index list
+        random.shuffle(index_list)
+        
+        # Iterate over partitions
+        partitions = configuration_yaml['partitions']
+        start_index = 0
+        for partition in partitions:
+            # Get the parttion's configuration
+            partition_configuration = configuration_yaml[partition]
+            
+            # Calculate the range of tuples
+            portion = partition_configuration['portion']
+            tuples_range = (start_index, start_index + portion - 1)
+            start_index += portion
+            
+            # Iterate over tuples
+            for o_tuple in original_tuples:
+                # If type_conversion is active
+                type_conversion_configuration = partition_configuration['type_conversion']
+                if type_conversion_configuration['activate']:
+                    # Iterate over columns to convert
+                    for column_to_convert in type_conversion_configuration['columns']:
+                        # Get the index of the column
+                        column_index = schema_columns.index(column_to_convert)
+                
+                # If column_removing is active
+                column_removing_configuration = partition_configuration['column_removing']
+                if column_removing_configuration['activate']:
+                    # Create a new tuple and substitue
+                    columns_to_remove = column_removing_configuration['columns']
+                    column_indicies = [schema_columns.index(column_to_remove) 
+                                        for column_to_remove in columns_to_remove]
+                    o_tuple = [v for i, v in enumerate(o_tuple) if i not in column_indicies]
+                    
+                    # Check deletion done well
+                    if len(o_tuple) != (len(schema_columns) - len(columns_to_remove)): 
+                        printAndExit('Invalid column deletion!')
