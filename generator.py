@@ -3,6 +3,7 @@ import csv
 import yaml
 import os
 import random
+from pathlib import Path
 
 def printAndExit(print_string):
     print(print_string)
@@ -79,6 +80,17 @@ def validateArguments():
     if len(sys.argv) != 2:
         print('Invalid arguments')
         sys.exit()
+        
+def getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration):
+    # If column_removing is active
+    column_removing_configuration = partition_configuration['column_removing']
+    if column_removing_configuration['activate']:
+        columns_to_remove = column_removing_configuration['columns']
+        column_indicies = [schema_columns.index(column_to_remove) for column_to_remove in columns_to_remove]
+        new_schema_columns = [column for i, column in enumerate(schema_columns) if i not in column_indicies]
+        return new_schema_columns
+    else: # If no to-be-removed columns, just return the original one
+        return schema_columns
 
 #####################
 ### MAIN FUNCTION ###
@@ -101,12 +113,13 @@ with open(configuration_file_path, "r") as configuration_file:
         # Create output folder
         title = configuration_yaml['title']
         output_folders_path = configuration_yaml['output_folders_path']
-        output_path = os.path.join(output_folders_path, title)
-        if os.path.exists(output_path):
-            os.system('rm -rf ' + output_path)
-        os.mkdir(output_path)
+        output_folder_path = os.path.join(output_folders_path, title)
+        if os.path.exists(output_folder_path):
+            os.system('rm -rf ' + output_folder_path)
+        os.mkdir(output_folder_path)
         
         # Read data file and store tuples in an array
+        print('Reading data file...')
         original_tuples = []
         data_file_path = configuration_yaml['data_file_path']
         with open(data_file_path) as data_file:
@@ -114,6 +127,7 @@ with open(configuration_file_path, "r") as configuration_file:
             for row in data_file_reader:
                 if len(row) != len(schema_columns): printAndExit('Invalid row!')
                 original_tuples.append(row)
+        print('Reading data done...')
                 
         # Create an index list
         num_tuples = len(original_tuples)
@@ -126,16 +140,25 @@ with open(configuration_file_path, "r") as configuration_file:
         partitions = configuration_yaml['partitions']
         start_index = 0
         for partition in partitions:
+            print('Processing ' + partition + ' ...')
+            
             # Get the parttion's configuration
             partition_configuration = configuration_yaml[partition]
             
-            # Calculate the range of tuples
+            # Calculate the range in shuffled index array
             portion = partition_configuration['portion']
-            tuples_range = (start_index, start_index + portion - 1)
-            start_index += portion
+            num_partition_tuples = num_tuples * portion / 100
+            tuples_range = (start_index, start_index + num_partition_tuples)
+            start_index += num_partition_tuples
             
-            # Iterate over tuples
-            for o_tuple in original_tuples:
+            # Get sub-array of the shuffled index array in the range
+            sub_index_list = index_list[tuples_range[0]:tuples_range[1]]
+            partition_tuples = []
+            
+            # Iterate over the sub-index-array
+            for tuple_index in sub_index_list:
+                # Get tuple by index
+                p_tuple = original_tuples[tuple_index]
                 # If type_conversion is active
                 type_conversion_configuration = partition_configuration['type_conversion']
                 if type_conversion_configuration['activate']:
@@ -151,8 +174,36 @@ with open(configuration_file_path, "r") as configuration_file:
                     columns_to_remove = column_removing_configuration['columns']
                     column_indicies = [schema_columns.index(column_to_remove) 
                                         for column_to_remove in columns_to_remove]
-                    o_tuple = [v for i, v in enumerate(o_tuple) if i not in column_indicies]
+                    p_tuple = [v for i, v in enumerate(p_tuple) if i not in column_indicies]
                     
                     # Check deletion done well
-                    if len(o_tuple) != (len(schema_columns) - len(columns_to_remove)): 
+                    if len(p_tuple) != (len(schema_columns) - len(columns_to_remove)): 
                         printAndExit('Invalid column deletion!')
+                    
+                partition_tuples.append(p_tuple)
+                
+            # Sort tuples based on the primary key values
+            #schema_columns_after_remove = getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration)
+            #primary_keys = schema_yaml['primary_keys']
+            #column_indicies = [schema_columns_after_remove.index(primary_key) for primary_key in primary_keys]
+            #primary_key_sorter = lambda x: (x[])
+            #sorted(partition_tuples, key=primary_key_sorter)
+            
+            # Export the tuples (<output_folders_path>/<title>/<table>_<partition>.csv)
+            print('Exporting ' + partition + ' ...')
+            base_file_name = Path(data_file_path).stem
+            file_name = base_file_name + '_' + partition + '.csv'
+            output_file_path = os.path.join(output_folder_path, file_name)
+            
+            with open(output_file_path, 'w') as csvfile:
+                csvwriter = csv.writer(csvfile, delimiter='|', quoting=csv.QUOTE_NONE)
+                for p_tuple in partition_tuples:
+                    csvwriter.writerow(p_tuple)
+            print('Exporting ' + partition + ' done')
+            
+            print('Processing ' + partition + ' done')
+            
+        # Export the configuration file
+        os.system('cp ' + configuration_file_path + ' ' + output_folder_path + '/config.yaml')
+        
+        # Generate and export data setup SQL files

@@ -1,7 +1,7 @@
-title: test
-table_name: lineitem
-schema_file: ./schemas/tpch/lineitem.yaml
-data_file_path: ./data/tpch/lineitem.csv
+title: test_supplier
+table_name: supplier
+schema_file: ./schemas/tpch/supplier.yaml
+data_file_path: ./data/tpch/supplier.csv
 output_folders_path: ./results
 partitions: [p1, p2]
 p1:
@@ -14,8 +14,8 @@ p2:
   portion: 50
   column_removing:
     activate: true
-    columns: [L_LINESTATUS]
+    columns: [S_COMMENT, S_PHONE]
   type_conversion:
     activate: true
-    columns: [L_QUANTITY]
+    columns: [S_ACCTBAL]
     types: [VARCHAR(20)]
