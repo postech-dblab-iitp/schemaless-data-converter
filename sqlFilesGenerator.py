@@ -94,6 +94,24 @@ def generateExportIndexSQL(configuration_yaml, schema_yaml):
     return
 
 def generateExportAnalyzeSQL(configuration_yaml, schema_yaml):
+    # Create empty file
+    sql_file_name = 'tpch-analyze.sql'
+    sql_file_path = createSQLFile(sql_file_name, configuration_yaml)
+    
+    # Get table name
+    target_table_name = configuration_yaml['table_name']
+    
+    # Iterate over partitions
+    partitions = configuration_yaml['partitions']
+    for partition in partitions:
+        # Set the table name
+        new_table_name = target_table_name + '_' + partition
+        # Print final string
+        with open(sql_file_path, 'a') as sql_file:
+            sql_file.write('analyze ' + new_table_name + ';\n')
+            
+    # Print other tables
+    exportOtherTableTemplates(sql_file_path, target_table_name, 'analyze', '\n')
     return
 
 def createSQLFile(sql_file_name, configuration_yaml):
