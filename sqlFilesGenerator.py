@@ -31,19 +31,20 @@ def generateExportLoadSQL(configuration_yaml, schema_yaml):
         create_sql = 'CREATE TABLE ' + new_table_name + ' ( \n'
         
         # Get columns without removed ones
-        columns_wo_removing = utils.getSchemaColumnsWithoutRemovedColumns(schema_yaml['columns'], 
-                                                                          configuration_yaml[partition])
+        columns_wo_removing = utils.getSchemaColumnsWithoutRemovedColumns(schema_yaml['columns'], configuration_yaml[partition])
         
-        # Iterate over columns and print
-        for column in columns_wo_removing:
+        # Iterate over columns and print        
+        for i, column in enumerate(columns_wo_removing):
             column_string = schema_yaml[column]
             create_sql += column 
             create_sql += '\t'
             create_sql += column_string
+            if i < len(columns_wo_removing) - 1:
+                create_sql += ','
             create_sql += '\n'
-        create_sql += ') '
         
         # Print table creation options
+        create_sql += ') '
         create_sql += schema_yaml['create_option']
         create_sql += ';\n\n'
         
