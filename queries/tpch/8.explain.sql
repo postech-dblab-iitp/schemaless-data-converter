@@ -1,10 +1,10 @@
--- using 1673537209 as a seed to the RNG
+-- using 1674060686 as a seed to the RNG
 
 
-explain select
+explain (FORMAT JSON) select
 	o_year,
 	sum(case
-		when nation = 'BRAZIL' then volume
+		when nation = 'CANADA' then volume
 		else 0
 	end) / sum(volume) as mkt_share
 from
@@ -32,7 +32,7 @@ from
 			and r_name = 'AMERICA'
 			and s_nationkey = n2.n_nationkey
 			and o_orderdate between date '1995-01-01' and date '1996-12-31'
-			and p_type = 'MEDIUM ANODIZED NICKEL'
+			and p_type = 'LARGE PLATED NICKEL'
 	) as all_nations
 group by
 	o_year

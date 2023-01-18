@@ -10,8 +10,14 @@ For the design description, see [Schemaless Data Experiment on Orca](https://doc
 ./data: data csv files (not included in the git project)
 ./templates: template sql files for data setup sql file generation
 ./results: generated csv files and SQL files
+```
+
+## Bash files
+
+```
 runner.sh: move generated files and run the experiment.
 test.sh: test script
+tpch_copy.sh: copy csv files and sql files from TPCH-Greenplum to data/tpch and queries/tpch
 ```
 
 ## Usage

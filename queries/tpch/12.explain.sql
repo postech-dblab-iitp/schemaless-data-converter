@@ -1,7 +1,7 @@
--- using 1673537209 as a seed to the RNG
+-- using 1674060687 as a seed to the RNG
 
 
-explain select
+explain (FORMAT JSON) select
 	l_shipmode,
 	sum(case
 		when o_orderpriority = '1-URGENT'
@@ -20,7 +20,7 @@ from
 	lineitem
 where
 	o_orderkey = l_orderkey
-	and l_shipmode in ('REG AIR', 'RAIL')
+	and l_shipmode in ('AIR', 'REG AIR')
 	and l_commitdate < l_receiptdate
 	and l_shipdate < l_commitdate
 	and l_receiptdate >= date '1995-01-01'

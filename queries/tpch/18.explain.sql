@@ -1,7 +1,7 @@
--- using 1673537209 as a seed to the RNG
+-- using 1674060687 as a seed to the RNG
 
 
-explain select
+explain (FORMAT JSON) select
 	c_name,
 	c_custkey,
 	o_orderkey,
@@ -20,7 +20,7 @@ where
 			lineitem
 		group by
 			l_orderkey having
-				sum(l_quantity) > 312
+				sum(l_quantity) > 314
 	)
 	and c_custkey = o_custkey
 	and o_orderkey = l_orderkey

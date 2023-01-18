@@ -1,7 +1,7 @@
--- using 1673537209 as a seed to the RNG
+-- using 1674060687 as a seed to the RNG
 
 
-explain select
+explain (FORMAT JSON) select
 	p_brand,
 	p_type,
 	p_size,
@@ -11,9 +11,9 @@ from
 	part
 where
 	p_partkey = ps_partkey
-	and p_brand <> 'Brand#11'
-	and p_type not like 'STANDARD BURNISHED%'
-	and p_size in (32, 26, 15, 6, 29, 19, 41, 33)
+	and p_brand <> 'Brand#55'
+	and p_type not like 'ECONOMY BURNISHED%'
+	and p_size in (4, 12, 35, 21, 31, 7, 24, 16)
 	and ps_suppkey not in (
 		select
 			s_suppkey

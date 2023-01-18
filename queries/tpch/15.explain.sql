@@ -1,4 +1,4 @@
--- using 1673537209 as a seed to the RNG
+-- using 1674060687 as a seed to the RNG
 
 create view revenue0 (supplier_no, total_revenue) as
 	select
@@ -7,13 +7,13 @@ create view revenue0 (supplier_no, total_revenue) as
 	from
 		lineitem
 	where
-		l_shipdate >= date '1993-10-01'
-		and l_shipdate < date '1993-10-01' + interval '3' month
+		l_shipdate >= date '1995-09-01'
+		and l_shipdate < date '1995-09-01' + interval '3' month
 	group by
 		l_suppkey;
 
 
-explain select
+explain (FORMAT JSON) select
 	s_suppkey,
 	s_name,
 	s_address,

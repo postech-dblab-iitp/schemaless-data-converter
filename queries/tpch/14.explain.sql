@@ -1,7 +1,7 @@
--- using 1673537209 as a seed to the RNG
+-- using 1674060687 as a seed to the RNG
 
 
-explain select
+explain (FORMAT JSON) select
 	100.00 * sum(case
 		when p_type like 'PROMO%'
 			then l_extendedprice * (1 - l_discount)
@@ -12,6 +12,6 @@ from
 	part
 where
 	l_partkey = p_partkey
-	and l_shipdate >= date '1995-07-01'
-	and l_shipdate < date '1995-07-01' + interval '1' month
+	and l_shipdate >= date '1995-06-01'
+	and l_shipdate < date '1995-06-01' + interval '1' month
 LIMIT 1;

@@ -1,7 +1,7 @@
--- using 1673537209 as a seed to the RNG
+-- using 1674060687 as a seed to the RNG
 
 
-explain select
+explain (FORMAT JSON) select
 	ps_partkey,
 	sum(ps_supplycost * ps_availqty) as value
 from
@@ -11,7 +11,7 @@ from
 where
 	ps_suppkey = s_suppkey
 	and s_nationkey = n_nationkey
-	and n_name = 'MOROCCO'
+	and n_name = 'MOZAMBIQUE'
 group by
 	ps_partkey having
 		sum(ps_supplycost * ps_availqty) > (
@@ -24,7 +24,7 @@ group by
 			where
 				ps_suppkey = s_suppkey
 				and s_nationkey = n_nationkey
-				and n_name = 'MOROCCO'
+				and n_name = 'MOZAMBIQUE'
 		)
 order by
 	value desc

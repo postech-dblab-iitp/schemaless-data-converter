@@ -1,7 +1,7 @@
--- using 1673537210 as a seed to the RNG
+-- using 1674060687 as a seed to the RNG
 
 
-explain select
+explain (FORMAT JSON) select
 	s_name,
 	count(*) as numwait
 from
@@ -34,7 +34,7 @@ where
 			and l3.l_receiptdate > l3.l_commitdate
 	)
 	and s_nationkey = n_nationkey
-	and n_name = 'UNITED KINGDOM'
+	and n_name = 'MOZAMBIQUE'
 group by
 	s_name
 order by

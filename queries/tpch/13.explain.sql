@@ -1,7 +1,7 @@
--- using 1673537209 as a seed to the RNG
+-- using 1674060687 as a seed to the RNG
 
 
-explain select
+explain (FORMAT JSON) select
 	c_count,
 	count(*) as custdist
 from
@@ -12,7 +12,7 @@ from
 		from
 			customer left outer join orders on
 				c_custkey = o_custkey
-				and o_comment not like '%pending%accounts%'
+				and o_comment not like '%special%requests%'
 		group by
 			c_custkey
 	) as c_orders (c_custkey, c_count)
