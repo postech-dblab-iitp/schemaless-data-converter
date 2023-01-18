@@ -11,3 +11,7 @@ For the design description, see [Schemaless Data Experiment on Orca](https://doc
 ./templates: template sql files for data setup sql file generation
 test.sh: test script
 ```
+
+## TODOs
+
+In sqlFileGenerator.py, Replace this into class, and make configuration yaml and sceham yaml as a class member.

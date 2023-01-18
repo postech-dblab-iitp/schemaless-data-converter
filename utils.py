@@ -28,3 +28,10 @@ def getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuratio
         return new_schema_columns
     else: # If no to-be-removed columns, just return the original one
         return schema_columns
+    
+def getRemovedColumns(partition_configuration):
+    column_removing_configuration = partition_configuration['column_removing']
+    if column_removing_configuration['activate']:
+        return column_removing_configuration['columns']
+    else: # If no to-be-removed columns, just return the original one
+        return []
