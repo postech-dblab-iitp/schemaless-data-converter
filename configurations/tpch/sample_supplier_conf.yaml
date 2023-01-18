@@ -1,4 +1,5 @@
 title: test_supplier
+benchmark: tpch
 table_name: supplier
 schema_file: ./schemas/tpch/supplier.yaml
 data_file_path: ./data/tpch/supplier.csv

@@ -1,4 +1,5 @@
 title: test_lineitem
+benchmark: tpch
 table_name: lineitem
 schema_file: ./schemas/tpch/lineitem.yaml
 data_file_path: ./data/tpch/lineitem.csv

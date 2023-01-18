@@ -3,11 +3,12 @@ import csv
 import yaml
 import os
 import random
-from pathlib import Path
+import sqlFilesGenerator
+import utils
 
-def printAndExit(print_string):
-    print(print_string)
-    sys.exit()
+#####################
+### VAL FUNCTIONS ###
+#####################
 
 # Validate the given configuration file
 def validateConfigurationFile(configuration_yaml, schema_yaml):
@@ -81,6 +82,15 @@ def validateArguments():
         print('Invalid arguments')
         sys.exit()
         
+
+def printAndExit(print_string):
+    print(print_string)
+    sys.exit()
+
+#####################
+### UTIL FUNCTION ###
+#####################
+
 def getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration):
     # If column_removing is active
     column_removing_configuration = partition_configuration['column_removing']
@@ -111,9 +121,7 @@ with open(configuration_file_path, "r") as configuration_file:
         validateConfigurationFile(configuration_yaml, schema_yaml)
         
         # Create output folder
-        title = configuration_yaml['title']
-        output_folders_path = configuration_yaml['output_folders_path']
-        output_folder_path = os.path.join(output_folders_path, title)
+        output_folder_path = utils.getOutputFolderPath(configuration_yaml)
         if os.path.exists(output_folder_path):
             os.system('rm -rf ' + output_folder_path)
         os.mkdir(output_folder_path)
@@ -190,19 +198,19 @@ with open(configuration_file_path, "r") as configuration_file:
             
             # Export the tuples (<output_folders_path>/<title>/<table>_<partition>.csv)
             print('Exporting ' + partition + ' ...')
-            base_file_name = Path(data_file_path).stem
-            file_name = base_file_name + '_' + partition + '.csv'
-            output_file_path = os.path.join(output_folder_path, file_name)
-            
+            output_file_path = utils.getPartitionOutputFilePath(configuration_yaml, partition)
             with open(output_file_path, 'w') as csvfile:
                 csvwriter = csv.writer(csvfile, delimiter='|', quoting=csv.QUOTE_NONE)
                 for p_tuple in partition_tuples:
                     csvwriter.writerow(p_tuple)
             print('Exporting ' + partition + ' done')
             
+            # Processing done
             print('Processing ' + partition + ' done')
             
         # Export the configuration file
         os.system('cp ' + configuration_file_path + ' ' + output_folder_path + '/config.yaml')
         
         # Generate and export data setup SQL files
+        benchmark = configuration_yaml['benchmark']
+        getattr(sqlFilesGenerator, 'generateExportDataSetupSQLFiles' + benchmark.upper())(configuration_yaml, schema_yaml)

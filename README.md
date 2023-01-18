@@ -8,5 +8,6 @@ For the design description, see [Schemaless Data Experiment on Orca](https://doc
 ./configuration: yaml files
 ./schemas: schema yaml files
 ./data: data csv files (not included in the git project)
+./templates: template sql files for data setup sql file generation
 test.sh: test script
 ```
