@@ -49,4 +49,3 @@ def getConversionType(partition_configuration, column_name):
     type_columns = type_conversion_configuration['types']
     column_index = type_conversion_columns.index(column_name)
     return type_columns[column_index]
-    

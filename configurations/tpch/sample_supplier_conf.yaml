@@ -3,6 +3,7 @@ benchmark: tpch
 table_name: supplier
 schema_file: ./schemas/tpch/supplier.yaml
 data_file_path: ./data/tpch/supplier.csv
+queries_path: ./queries/tpch
 output_folders_path: ./results
 partitions: [p1, p2]
 p1:

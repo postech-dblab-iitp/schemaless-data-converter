@@ -5,6 +5,7 @@ import os
 import random
 import sqlFilesGenerator
 import utils
+import queryModifier
 
 #####################
 ### VAL FUNCTIONS ###
@@ -214,3 +215,9 @@ with open(configuration_file_path, "r") as configuration_file:
         # Generate and export data setup SQL files
         benchmark = configuration_yaml['benchmark']
         getattr(sqlFilesGenerator, 'generateExportDataSetupSQLFiles' + benchmark.upper())(configuration_yaml, schema_yaml)
+        
+        # Generate and export queries
+        queries_path = configuration_yaml['queries_path']
+        output_queries_path = os.path.join(output_folder_path, 'queries')
+        os.mkdir(output_queries_path)
+        queryModifier.modifyExportAllQueries(configuration_yaml, schema_yaml, queries_path, output_queries_path)
