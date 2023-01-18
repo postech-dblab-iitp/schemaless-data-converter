@@ -35,3 +35,18 @@ def getRemovedColumns(partition_configuration):
         return column_removing_configuration['columns']
     else: # If no to-be-removed columns, just return the original one
         return []
+        
+def getTypeConversionColumns(partition_configuration):
+    type_conversion_configuration = partition_configuration['type_conversion']
+    if type_conversion_configuration['activate']:
+        return type_conversion_configuration['columns']
+    else:
+        return []
+    
+def getConversionType(partition_configuration, column_name):
+    type_conversion_configuration = partition_configuration['type_conversion']
+    type_conversion_columns = type_conversion_configuration['columns']
+    type_columns = type_conversion_configuration['types']
+    column_index = type_conversion_columns.index(column_name)
+    return type_columns[column_index]
+    

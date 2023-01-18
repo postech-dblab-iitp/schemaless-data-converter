@@ -33,12 +33,21 @@ def generateExportLoadSQL(configuration_yaml, schema_yaml):
         # Get columns without removed ones
         columns_wo_removing = utils.getSchemaColumnsWithoutRemovedColumns(schema_yaml['columns'], configuration_yaml[partition])
         
+        # Get type conversion columns
+        columns_type_conversion = utils.getTypeConversionColumns(configuration_yaml[partition])
+        
         # Iterate over columns and print        
         for i, column in enumerate(columns_wo_removing):
-            column_string = schema_yaml[column]
+            # If the column needs type conversion, then get type string from configuation file
+            if column in columns_type_conversion:
+                column_string = utils.getConversionType(configuration_yaml[partition], column)
+            else: # Else, get type string from the schema file
+                column_string = schema_yaml[column]
+            # Print column name and type
             create_sql += column 
             create_sql += '\t'
             create_sql += column_string
+            # If not the last column, print comma
             if i < len(columns_wo_removing) - 1:
                 create_sql += ','
             create_sql += '\n'
