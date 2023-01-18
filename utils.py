@@ -18,7 +18,7 @@ def getPartitionFileBaseName(configuration_yaml, partition):
     base_file_name = Path(data_file_path).stem
     return base_file_name + '_' + partition
 
-def getSchemaColumnsWithoutRemovedColumns(partition_configuration, schema_columns):
+def getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration):
     # If column_removing is active
     column_removing_configuration = partition_configuration['column_removing']
     if column_removing_configuration['activate']:

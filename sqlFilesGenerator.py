@@ -29,7 +29,8 @@ def generateExportLoadSQL(configuration_yaml, schema_yaml):
         create_sql = 'CREATE TABLE ' + new_table_name + ' ( \n'
         
         # Get columns without removed ones
-        columns_wo_removing = getPartitionColumnsWithoutRemovedOnes(configuration_yaml, schema_yaml, partition)
+        columns_wo_removing = utils.getSchemaColumnsWithoutRemovedColumns(schema_yaml['columns'], 
+                                                                          configuration_yaml[partition])
         
         # Iterate over columns and print
         for column in columns_wo_removing:
@@ -54,11 +55,36 @@ def generateExportLoadSQL(configuration_yaml, schema_yaml):
             sql_file.write(create_sql)
             
     # Print other tables
-    exportOtherTableTemplates(sql_file_path, target_table_name, 'load')
+    exportOtherTableTemplates(sql_file_path, target_table_name, 'load', '\n\n\n\n')
     return
 
 def generateExportPkeysSQL(configuration_yaml, schema_yaml):
+    # Create empty file
+    sql_file_name = 'tpch-pkeys.sql'
+    sql_file_path = createSQLFile(sql_file_name, configuration_yaml)
     
+    # Get table name
+    target_table_name = configuration_yaml['table_name']
+    
+    # Iterate over partitions
+    partitions = configuration_yaml['partitions']
+    for partition in partitions:
+        # Set the table name
+        new_table_name = target_table_name + '_' + partition
+        # Get primary keys
+        primary_keys = schema_yaml['primary_keys']
+        # Print ALTER TABLE <new_table_name> ADD PRIMARY KEY <primary_keys>
+        alter_table_sql = 'ALTER TABLE ' + new_table_name + ' ADD PRIMARY KEY ('
+        alter_table_sql += ','.join(primary_keys)
+        alter_table_sql += ');'
+        alter_table_sql += '\n'
+        
+        # Print final string
+        with open(sql_file_path, 'a') as sql_file:
+            sql_file.write(alter_table_sql)
+    
+    # Print other tables
+    exportOtherTableTemplates(sql_file_path, target_table_name, 'pkeys', '\n')
     return
 
 def generateExportAlterSQL(configuration_yaml, schema_yaml):
@@ -81,16 +107,11 @@ def getTemplateSQLFilePath(phase_name, table_name):
     sql_file_path = os.path.join(phase_folder, table_name) + '.sql'
     return sql_file_path
 
-def getPartitionColumnsWithoutRemovedOnes(configuration_yaml, schema_yaml, partition):    
-    schema_columns = schema_yaml['columns']
-    partition_configuration = configuration_yaml[partition]
-    return utils.getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration)
-
-def exportOtherTableTemplates(sql_file_path, target_table_name, phase_name):
+def exportOtherTableTemplates(sql_file_path, target_table_name, phase_name, end_of_table_string):
     other_tables = [table for table in tables_tpch if table != target_table_name]
     for other_table in other_tables:
         sql_template_file_path = getTemplateSQLFilePath(phase_name, other_table)
         with open(sql_template_file_path, 'r') as sql_template_file:
             with open(sql_file_path, 'a') as sql_file:
                 sql_file.write(sql_template_file.read())
-                sql_file.write('\n\n\n\n')
+                sql_file.write(end_of_table_string)
