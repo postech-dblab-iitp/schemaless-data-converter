@@ -183,11 +183,10 @@ with open(configuration_file_path, "r") as configuration_file:
                 partition_tuples.append(p_tuple)
                 
             # Sort tuples based on the primary key values
-            #schema_columns_after_remove = getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration)
-            #primary_keys = schema_yaml['primary_keys']
-            #column_indicies = [schema_columns_after_remove.index(primary_key) for primary_key in primary_keys]
-            #primary_key_sorter = lambda x: (x[])
-            #sorted(partition_tuples, key=primary_key_sorter)
+            schema_columns_after_remove = getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration)
+            primary_key_indicies = [schema_columns_after_remove.index(primary_key) for primary_key in schema_yaml['primary_keys']]
+            primary_key_sorter = lambda x: [int(x[index]) for index in primary_key_indicies]
+            partition_tuples = sorted(partition_tuples, key=primary_key_sorter)
             
             # Export the tuples (<output_folders_path>/<title>/<table>_<partition>.csv)
             print('Exporting ' + partition + ' ...')
