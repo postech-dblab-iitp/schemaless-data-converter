@@ -11,18 +11,6 @@ def generateExportDataSetupSQLFilesTPCH(configuration_yaml, schema_yaml):
     generateExportIndexSQL(configuration_yaml, schema_yaml)
     generateExportAnalyzeSQL(configuration_yaml, schema_yaml)
 
-def createSQLFile(sql_file_name, configuration_yaml):
-    sql_file_name = 'tpch-load.sql'
-    output_folder_path = utils.getOutputFolderPath(configuration_yaml)
-    sql_file_path = os.path.join(output_folder_path, sql_file_name)
-    os.system('touch ' + sql_file_path)
-    return sql_file_path
-
-def getTemplateSQLFile(phase_name, table_name):
-    phase_folder = os.path.join(tpch_template_folder, phase_name)
-    sql_file_path = os.path.join(phase_folder, table_name) + '.sql'
-    return sql_file_path
-
 def generateExportLoadSQL(configuration_yaml, schema_yaml):
     # Create empty file
     sql_file_name = 'tpch-load.sql'
@@ -41,9 +29,7 @@ def generateExportLoadSQL(configuration_yaml, schema_yaml):
         create_sql = 'CREATE TABLE ' + new_table_name + ' ( \n'
         
         # Get columns without removed ones
-        schema_columns = schema_yaml['columns']
-        partition_configuration = configuration_yaml[partition]
-        columns_wo_removing = utils.getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration)
+        columns_wo_removing = getPartitionColumnsWithoutRemovedOnes(configuration_yaml, schema_yaml, partition)
         
         # Iterate over columns and print
         for column in columns_wo_removing:
@@ -68,16 +54,11 @@ def generateExportLoadSQL(configuration_yaml, schema_yaml):
             sql_file.write(create_sql)
             
     # Print other tables
-    other_tables = [table for table in tables_tpch if table != target_table_name]
-    for other_table in other_tables:
-        sql_template_file_path = getTemplateSQLFile('load', other_table)
-        with open(sql_template_file_path, 'r') as sql_template_file:
-            with open(sql_file_path, 'a') as sql_file:
-                sql_file.write(sql_template_file.read())
-                sql_file.write('\n\n\n\n')
+    exportOtherTableTemplates(sql_file_path, target_table_name, 'load')
     return
 
 def generateExportPkeysSQL(configuration_yaml, schema_yaml):
+    
     return
 
 def generateExportAlterSQL(configuration_yaml, schema_yaml):
@@ -88,3 +69,28 @@ def generateExportIndexSQL(configuration_yaml, schema_yaml):
 
 def generateExportAnalyzeSQL(configuration_yaml, schema_yaml):
     return
+
+def createSQLFile(sql_file_name, configuration_yaml):
+    output_folder_path = utils.getOutputFolderPath(configuration_yaml)
+    sql_file_path = os.path.join(output_folder_path, sql_file_name)
+    os.system('touch ' + sql_file_path)
+    return sql_file_path
+
+def getTemplateSQLFilePath(phase_name, table_name):
+    phase_folder = os.path.join(tpch_template_folder, phase_name)
+    sql_file_path = os.path.join(phase_folder, table_name) + '.sql'
+    return sql_file_path
+
+def getPartitionColumnsWithoutRemovedOnes(configuration_yaml, schema_yaml, partition):    
+    schema_columns = schema_yaml['columns']
+    partition_configuration = configuration_yaml[partition]
+    return utils.getSchemaColumnsWithoutRemovedColumns(schema_columns, partition_configuration)
+
+def exportOtherTableTemplates(sql_file_path, target_table_name, phase_name):
+    other_tables = [table for table in tables_tpch if table != target_table_name]
+    for other_table in other_tables:
+        sql_template_file_path = getTemplateSQLFilePath(phase_name, other_table)
+        with open(sql_template_file_path, 'r') as sql_template_file:
+            with open(sql_file_path, 'a') as sql_file:
+                sql_file.write(sql_template_file.read())
+                sql_file.write('\n\n\n\n')
