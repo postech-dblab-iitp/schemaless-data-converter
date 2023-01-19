@@ -1,0 +1,21 @@
+title: lineitem_1
+benchmark: tpch
+table_name: lineitem
+schema_file: ./schemas/tpch/lineitem.yaml
+data_file_path: ./data/tpch/lineitem.csv
+queries_path: ./queries/tpch
+output_folders_path: ./results
+partitions: [p1, p2]
+p1:
+  portion: 50
+  column_removing:
+    activate: false
+  type_conversion:
+    activate: false
+p2:
+  portion: 50
+  column_removing:
+    activate: true
+    columns: [L_DISCOUNT, L_TAX, L_SHIPDATE]
+  type_conversion:
+    activate: false

@@ -32,3 +32,7 @@ bash runner.sh <DB name> <Generated data path>
 ## TODOs
 
 In sqlFileGenerator.py, Replace this into class, and make configuration yaml and sceham yaml as a class member.
+
+How to handle table alias?? for example, SELECT .. FROM supplier as s; . We cannot just substitute supplier
+
+How to handler supplier_no or agg_lineitem?? (simple way? read one more character in the front and the back.)
