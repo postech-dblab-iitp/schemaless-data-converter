@@ -1,4 +1,4 @@
--- using 1674060686 as a seed to the RNG
+-- using 1674113663 as a seed to the RNG
 
 
 explain (FORMAT JSON) select
@@ -19,11 +19,11 @@ from
 where
 	p_partkey = ps_partkey
 	and s_suppkey = ps_suppkey
-	and p_size = 1
-	and p_type like '%BRASS'
+	and p_size = 37
+	and p_type like '%STEEL'
 	and s_nationkey = n_nationkey
 	and n_regionkey = r_regionkey
-	and r_name = 'MIDDLE EAST'
+	and r_name = 'AMERICA'
 	and ps_supplycost = (
 		select
 			min(ps_supplycost)
@@ -37,11 +37,10 @@ where
 			and s_suppkey = ps_suppkey
 			and s_nationkey = n_nationkey
 			and n_regionkey = r_regionkey
-			and r_name = 'MIDDLE EAST'
+			and r_name = 'AMERICA'
 	)
 order by
 	s_acctbal desc,
 	n_name,
 	s_name,
-	p_partkey
-LIMIT 100;
+	p_partkey;

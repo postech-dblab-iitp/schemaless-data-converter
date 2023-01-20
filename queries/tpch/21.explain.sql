@@ -1,4 +1,4 @@
--- using 1674060687 as a seed to the RNG
+-- using 1674113663 as a seed to the RNG
 
 
 explain (FORMAT JSON) select
@@ -34,7 +34,7 @@ where
 			and l3.l_receiptdate > l3.l_commitdate
 	)
 	and s_nationkey = n_nationkey
-	and n_name = 'MOZAMBIQUE'
+	and n_name = 'CANADA'
 group by
 	s_name
 order by

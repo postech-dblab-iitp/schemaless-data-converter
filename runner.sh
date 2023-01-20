@@ -2,6 +2,7 @@
 
 DBNAME=$1
 DATAPATH=$2
+MODE=$3
 
 # Move original datas
 echo 'Moving original data to temp folder'
@@ -26,8 +27,18 @@ cd /home/TPCH-Greenplum
 
 # Run test
 echo 'Running test'
-rm -rf results
-bash benchmark_test.sh results 127.0.0.1 $DBNAME gpadmin gpadmin
+if [ $3 == 'r' ] 
+then
+    rm -rf results1
+    rm -rf results2
+    rm -rf results3
+    bash benchmark_test.sh results1 127.0.0.1 $DBNAME gpadmin gpadmin
+    bash tpch_test_only.sh results2 127.0.0.1 $DBNAME gpadmin gpadmin
+    bash tpch_test_only.sh results3 127.0.0.1 $DBNAME gpadmin gpadmin
+else
+    rm -rf results
+    bash benchmark_test.sh results 127.0.0.1 $DBNAME gpadmin gpadmin
+fi
 
 # Restore the data
 echo 'Remove dss folder and restore the temp folder'

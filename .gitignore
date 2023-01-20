@@ -2,3 +2,4 @@ data/*
 results/*
 queries/*
 *.pyc
+execution_average_result.txt

@@ -1,4 +1,4 @@
--- using 1674060686 as a seed to the RNG
+-- using 1674113663 as a seed to the RNG
 
 
 explain (FORMAT JSON) select
@@ -11,11 +11,11 @@ from
 	orders,
 	lineitem
 where
-	c_mktsegment = 'FURNITURE'
+	c_mktsegment = 'BUILDING'
 	and c_custkey = o_custkey
 	and l_orderkey = o_orderkey
-	and o_orderdate < date '1995-03-30'
-	and l_shipdate > date '1995-03-30'
+	and o_orderdate < date '1995-03-11'
+	and l_shipdate > date '1995-03-11'
 group by
 	l_orderkey,
 	o_orderdate,

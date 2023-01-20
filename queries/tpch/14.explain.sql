@@ -1,4 +1,4 @@
--- using 1674060687 as a seed to the RNG
+-- using 1674113663 as a seed to the RNG
 
 
 explain (FORMAT JSON) select
@@ -12,6 +12,5 @@ from
 	part
 where
 	l_partkey = p_partkey
-	and l_shipdate >= date '1995-06-01'
-	and l_shipdate < date '1995-06-01' + interval '1' month
-LIMIT 1;
+	and l_shipdate >= date '1996-05-01'
+	and l_shipdate < date '1996-05-01' + interval '1' month;

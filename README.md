@@ -25,8 +25,9 @@ tpch_copy.sh: copy csv files and sql files from TPCH-Greenplum to data/tpch and 
 // to generate files
 python generator.py <configuration file path>
 // to run TPCH benchmark using generated dataset
-bash runner.sh <DB name> <Generated data path>
-// e.g, bash runner.sh tpch ./results/test_supplier
+bash runner.sh <DB name> <Generated data path> <mode>
+// mode means repetitive running or just single run. On repetitive running by r option
+// e.g, bash runner.sh tpch ./results/test_supplier r
 ```
 
 ## TODOs

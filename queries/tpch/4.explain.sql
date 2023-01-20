@@ -1,4 +1,4 @@
--- using 1674060686 as a seed to the RNG
+-- using 1674113663 as a seed to the RNG
 
 
 explain (FORMAT JSON) select
@@ -7,8 +7,8 @@ explain (FORMAT JSON) select
 from
 	orders
 where
-	o_orderdate >= date '1997-07-01'
-	and o_orderdate < date '1997-07-01' + interval '3' month
+	o_orderdate >= date '1994-09-01'
+	and o_orderdate < date '1994-09-01' + interval '3' month
 	and exists (
 		select
 			*
@@ -21,5 +21,4 @@ where
 group by
 	o_orderpriority
 order by
-	o_orderpriority
-LIMIT 1;
+	o_orderpriority;

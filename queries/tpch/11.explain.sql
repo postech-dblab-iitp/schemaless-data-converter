@@ -1,4 +1,4 @@
--- using 1674060687 as a seed to the RNG
+-- using 1674113663 as a seed to the RNG
 
 
 explain (FORMAT JSON) select
@@ -11,7 +11,7 @@ from
 where
 	ps_suppkey = s_suppkey
 	and s_nationkey = n_nationkey
-	and n_name = 'MOZAMBIQUE'
+	and n_name = 'FRANCE'
 group by
 	ps_partkey having
 		sum(ps_supplycost * ps_availqty) > (
@@ -24,8 +24,7 @@ group by
 			where
 				ps_suppkey = s_suppkey
 				and s_nationkey = n_nationkey
-				and n_name = 'MOZAMBIQUE'
+				and n_name = 'FRANCE'
 		)
 order by
-	value desc
-LIMIT 1;
+	value desc;

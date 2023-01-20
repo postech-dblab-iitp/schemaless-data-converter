@@ -1,4 +1,4 @@
--- using 1674060686 as a seed to the RNG
+-- using 1674113663 as a seed to the RNG
 
 
 explain (FORMAT JSON) select
@@ -6,8 +6,7 @@ explain (FORMAT JSON) select
 from
 	lineitem
 where
-	l_shipdate >= date '1995-01-01'
-	and l_shipdate < date '1995-01-01' + interval '1' year
-	and l_discount between 0.06 - 0.01 and 0.06 + 0.01
-	and l_quantity < 24
-LIMIT 1;
+	l_shipdate >= date '1996-01-01'
+	and l_shipdate < date '1996-01-01' + interval '1' year
+	and l_discount between 0.08 - 0.01 and 0.08 + 0.01
+	and l_quantity < 24;

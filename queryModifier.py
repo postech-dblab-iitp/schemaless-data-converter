@@ -63,7 +63,7 @@ def modifyQuery(query, configuration_yaml, schema_yaml):
         union_query += (' FROM ' + partition_table_name)
         # If not the last partition, append ‘) \n UNION \n’
         if i < len(partitions) - 1:
-            union_query += ') UNION '
+            union_query += ') UNION ALL '
         # Else, append ‘) \
         else:
             union_query += ')'

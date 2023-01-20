@@ -1,4 +1,4 @@
--- using 1674060687 as a seed to the RNG
+-- using 1674113663 as a seed to the RNG
 
 
 explain (FORMAT JSON) select
@@ -12,7 +12,7 @@ from
 		from
 			customer left outer join orders on
 				c_custkey = o_custkey
-				and o_comment not like '%special%requests%'
+				and o_comment not like '%unusual%accounts%'
 		group by
 			c_custkey
 	) as c_orders (c_custkey, c_count)
@@ -20,5 +20,4 @@ group by
 	c_count
 order by
 	custdist desc,
-	c_count desc
-LIMIT 1;
+	c_count desc;
