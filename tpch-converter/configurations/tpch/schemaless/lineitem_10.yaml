@@ -1,0 +1,43 @@
+title: lineitem_10
+benchmark: tpch
+table_name: lineitem
+schema_file: ./schemas/tpch/lineitem.yaml
+data_file_path: ./data/tpch/lineitem.csv
+queries_path: ./queries/tpch
+output_folders_path: ./results
+partitions: [p1, p2, p3, p4, p5]
+p1:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [L_SHIPMODE]
+  type_conversion:
+    activate: false
+p2:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [L_COMMITDATE, L_LINESTATUS]
+  type_conversion:
+    activate: false
+p3:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [L_COMMENT]
+  type_conversion:
+    activate: false
+p4:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [L_TAX, L_RETURNFLAG]
+  type_conversion:
+    activate: false
+p5:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [L_SHIPDATE]
+  type_conversion:
+    activate: false

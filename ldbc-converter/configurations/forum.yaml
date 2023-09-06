@@ -1,0 +1,15 @@
+table_name: forum
+schema_file: ./schemas/forum.yaml
+data_file_path: ./original-dataset/dynamic/forum_0_0.csv
+output_folders_path: ./generated-dataset/dynamic
+partitions: [p1, p2]
+p1:
+  portion: 50
+  column_removing:
+    activate: true
+    columns: [f_creationdate]
+p2:
+  portion: 50
+  column_removing:
+    activate: true
+    columns: [f_moderatorid]

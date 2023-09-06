@@ -1,0 +1,14 @@
+columns: [
+  pl_placeid,
+  pl_name,
+  pl_url,
+  pl_type,
+  pl_containerplaceid
+]
+pl_placeid: bigint not null
+pl_name: varchar not null
+pl_url: varchar not null
+pl_type: varchar not null
+pl_containerplaceid: bigint
+primary_keys: [pl_placeid]
+create_option:

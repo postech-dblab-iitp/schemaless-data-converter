@@ -1,0 +1,342 @@
+                                           QUERY PLAN                                           
+------------------------------------------------------------------------------------------------
+ [                                                                                             +
+   {                                                                                           +
+     "Plan": {                                                                                 +
+       "Node Type": "Gather Motion",                                                           +
+       "Senders": 1,                                                                           +
+       "Receivers": 1,                                                                         +
+       "Slice": 2,                                                                             +
+       "Segments": 1,                                                                          +
+       "Gang Type": "primary reader",                                                          +
+       "Startup Cost": 0.00,                                                                   +
+       "Total Cost": 2164.01,                                                                  +
+       "Plan Rows": 44,                                                                        +
+       "Plan Width": 30,                                                                       +
+       "Actual Startup Time": 8.067,                                                           +
+       "Actual Total Time": 8.068,                                                             +
+       "Actual Rows": 5,                                                                       +
+       "Actual Loops": 1,                                                                      +
+       "Merge Key": ["knows.k_creationdate", "person_p1.p_personid"],                          +
+       "Plans": [                                                                              +
+         {                                                                                     +
+           "Node Type": "Sort",                                                                +
+           "Parent Relationship": "Outer",                                                     +
+           "Slice": 2,                                                                         +
+           "Segments": 1,                                                                      +
+           "Gang Type": "primary reader",                                                      +
+           "Startup Cost": 0.00,                                                               +
+           "Total Cost": 2164.00,                                                              +
+           "Plan Rows": 44,                                                                    +
+           "Plan Width": 30,                                                                   +
+           "Actual Startup Time": 6.967,                                                       +
+           "Actual Total Time": 6.972,                                                         +
+           "Actual Rows": 5,                                                                   +
+           "Actual Loops": 1,                                                                  +
+           "Sort Key": ["knows.k_creationdate", "person_p1.p_personid"],                       +
+           "Sort Method": "quicksort",                                                         +
+           "Sort Space Used": 33,                                                              +
+           "Sort Space Type": "Memory",                                                        +
+           "Plans": [                                                                          +
+             {                                                                                 +
+               "Node Type": "Hash Join",                                                       +
+               "Parent Relationship": "Outer",                                                 +
+               "Slice": 2,                                                                     +
+               "Segments": 1,                                                                  +
+               "Gang Type": "primary reader",                                                  +
+               "Join Type": "Inner",                                                           +
+               "Startup Cost": 0.00,                                                           +
+               "Total Cost": 2163.96,                                                          +
+               "Plan Rows": 44,                                                                +
+               "Plan Width": 30,                                                               +
+               "Actual Startup Time": 2.584,                                                   +
+               "Actual Total Time": 6.457,                                                     +
+               "Actual Rows": 5,                                                               +
+               "Actual Loops": 1,                                                              +
+               "Hash Cond": "(person_p1.p_personid = knows.k_person2id)",                      +
+               "Extra Text": [                                                                 +
+                 {                                                                             +
+                   "Extra Text": "Hash chain length 1.0 avg, 1 max, using 5 of 262144 buckets."+
+                 }                                                                             +
+               ],                                                                              +
+               "Plans": [                                                                      +
+                 {                                                                             +
+                   "Node Type": "Append",                                                      +
+                   "Parent Relationship": "Outer",                                             +
+                   "Slice": 2,                                                                 +
+                   "Segments": 1,                                                              +
+                   "Gang Type": "primary reader",                                              +
+                   "Startup Cost": 0.00,                                                       +
+                   "Total Cost": 2156.06,                                                      +
+                   "Plan Rows": 9890,                                                          +
+                   "Plan Width": 22,                                                           +
+                   "Actual Startup Time": 0.017,                                               +
+                   "Actual Total Time": 3.521,                                                 +
+                   "Actual Rows": 9890,                                                        +
+                   "Actual Loops": 1,                                                          +
+                   "Plans": [                                                                  +
+                     {                                                                         +
+                       "Node Type": "Result",                                                  +
+                       "Parent Relationship": "Member",                                        +
+                       "Slice": 2,                                                             +
+                       "Segments": 1,                                                          +
+                       "Gang Type": "primary reader",                                          +
+                       "Startup Cost": 0.00,                                                   +
+                       "Total Cost": 431.18,                                                   +
+                       "Plan Rows": 1978,                                                      +
+                       "Plan Width": 22,                                                       +
+                       "Actual Startup Time": 0.017,                                           +
+                       "Actual Total Time": 0.551,                                             +
+                       "Actual Rows": 1978,                                                    +
+                       "Actual Loops": 1,                                                      +
+                       "Plans": [                                                              +
+                         {                                                                     +
+                           "Node Type": "Seq Scan",                                            +
+                           "Parent Relationship": "Outer",                                     +
+                           "Slice": 2,                                                         +
+                           "Segments": 1,                                                      +
+                           "Gang Type": "primary reader",                                      +
+                           "Relation Name": "person_p1",                                       +
+                           "Alias": "person_p1",                                               +
+                           "Startup Cost": 0.00,                                               +
+                           "Total Cost": 431.08,                                               +
+                           "Plan Rows": 1978,                                                  +
+                           "Plan Width": 14,                                                   +
+                           "Actual Startup Time": 0.017,                                       +
+                           "Actual Total Time": 0.329,                                         +
+                           "Actual Rows": 1978,                                                +
+                           "Actual Loops": 1                                                   +
+                         }                                                                     +
+                       ]                                                                       +
+                     },                                                                        +
+                     {                                                                         +
+                       "Node Type": "Result",                                                  +
+                       "Parent Relationship": "Member",                                        +
+                       "Slice": 2,                                                             +
+                       "Segments": 1,                                                          +
+                       "Gang Type": "primary reader",                                          +
+                       "Startup Cost": 0.00,                                                   +
+                       "Total Cost": 431.18,                                                   +
+                       "Plan Rows": 1978,                                                      +
+                       "Plan Width": 22,                                                       +
+                       "Actual Startup Time": 0.009,                                           +
+                       "Actual Total Time": 0.570,                                             +
+                       "Actual Rows": 1978,                                                    +
+                       "Actual Loops": 1,                                                      +
+                       "Plans": [                                                              +
+                         {                                                                     +
+                           "Node Type": "Seq Scan",                                            +
+                           "Parent Relationship": "Outer",                                     +
+                           "Slice": 2,                                                         +
+                           "Segments": 1,                                                      +
+                           "Gang Type": "primary reader",                                      +
+                           "Relation Name": "person_p2",                                       +
+                           "Alias": "person_p2",                                               +
+                           "Startup Cost": 0.00,                                               +
+                           "Total Cost": 431.08,                                               +
+                           "Plan Rows": 1978,                                                  +
+                           "Plan Width": 14,                                                   +
+                           "Actual Startup Time": 0.009,                                       +
+                           "Actual Total Time": 0.326,                                         +
+                           "Actual Rows": 1978,                                                +
+                           "Actual Loops": 1                                                   +
+                         }                                                                     +
+                       ]                                                                       +
+                     },                                                                        +
+                     {                                                                         +
+                       "Node Type": "Result",                                                  +
+                       "Parent Relationship": "Member",                                        +
+                       "Slice": 2,                                                             +
+                       "Segments": 1,                                                          +
+                       "Gang Type": "primary reader",                                          +
+                       "Startup Cost": 0.00,                                                   +
+                       "Total Cost": 431.18,                                                   +
+                       "Plan Rows": 1978,                                                      +
+                       "Plan Width": 24,                                                       +
+                       "Actual Startup Time": 0.013,                                           +
+                       "Actual Total Time": 0.565,                                             +
+                       "Actual Rows": 1978,                                                    +
+                       "Actual Loops": 1,                                                      +
+                       "Plans": [                                                              +
+                         {                                                                     +
+                           "Node Type": "Seq Scan",                                            +
+                           "Parent Relationship": "Outer",                                     +
+                           "Slice": 2,                                                         +
+                           "Segments": 1,                                                      +
+                           "Gang Type": "primary reader",                                      +
+                           "Relation Name": "person_p3",                                       +
+                           "Alias": "person_p3",                                               +
+                           "Startup Cost": 0.00,                                               +
+                           "Total Cost": 431.08,                                               +
+                           "Plan Rows": 1978,                                                  +
+                           "Plan Width": 14,                                                   +
+                           "Actual Startup Time": 0.013,                                       +
+                           "Actual Total Time": 0.328,                                         +
+                           "Actual Rows": 1978,                                                +
+                           "Actual Loops": 1                                                   +
+                         }                                                                     +
+                       ]                                                                       +
+                     },                                                                        +
+                     {                                                                         +
+                       "Node Type": "Result",                                                  +
+                       "Parent Relationship": "Member",                                        +
+                       "Slice": 2,                                                             +
+                       "Segments": 1,                                                          +
+                       "Gang Type": "primary reader",                                          +
+                       "Startup Cost": 0.00,                                                   +
+                       "Total Cost": 431.16,                                                   +
+                       "Plan Rows": 1978,                                                      +
+                       "Plan Width": 24,                                                       +
+                       "Actual Startup Time": 0.009,                                           +
+                       "Actual Total Time": 0.550,                                             +
+                       "Actual Rows": 1978,                                                    +
+                       "Actual Loops": 1,                                                      +
+                       "Plans": [                                                              +
+                         {                                                                     +
+                           "Node Type": "Seq Scan",                                            +
+                           "Parent Relationship": "Outer",                                     +
+                           "Slice": 2,                                                         +
+                           "Segments": 1,                                                      +
+                           "Gang Type": "primary reader",                                      +
+                           "Relation Name": "person_p4",                                       +
+                           "Alias": "person_p4",                                               +
+                           "Startup Cost": 0.00,                                               +
+                           "Total Cost": 431.08,                                               +
+                           "Plan Rows": 1978,                                                  +
+                           "Plan Width": 8,                                                    +
+                           "Actual Startup Time": 0.009,                                       +
+                           "Actual Total Time": 0.311,                                         +
+                           "Actual Rows": 1978,                                                +
+                           "Actual Loops": 1                                                   +
+                         }                                                                     +
+                       ]                                                                       +
+                     },                                                                        +
+                     {                                                                         +
+                       "Node Type": "Result",                                                  +
+                       "Parent Relationship": "Member",                                        +
+                       "Slice": 2,                                                             +
+                       "Segments": 1,                                                          +
+                       "Gang Type": "primary reader",                                          +
+                       "Startup Cost": 0.00,                                                   +
+                       "Total Cost": 431.16,                                                   +
+                       "Plan Rows": 1978,                                                      +
+                       "Plan Width": 24,                                                       +
+                       "Actual Startup Time": 0.014,                                           +
+                       "Actual Total Time": 0.531,                                             +
+                       "Actual Rows": 1978,                                                    +
+                       "Actual Loops": 1,                                                      +
+                       "Plans": [                                                              +
+                         {                                                                     +
+                           "Node Type": "Seq Scan",                                            +
+                           "Parent Relationship": "Outer",                                     +
+                           "Slice": 2,                                                         +
+                           "Segments": 1,                                                      +
+                           "Gang Type": "primary reader",                                      +
+                           "Relation Name": "person_p5",                                       +
+                           "Alias": "person_p5",                                               +
+                           "Startup Cost": 0.00,                                               +
+                           "Total Cost": 431.08,                                               +
+                           "Plan Rows": 1978,                                                  +
+                           "Plan Width": 8,                                                    +
+                           "Actual Startup Time": 0.014,                                       +
+                           "Actual Total Time": 0.304,                                         +
+                           "Actual Rows": 1978,                                                +
+                           "Actual Loops": 1                                                   +
+                         }                                                                     +
+                       ]                                                                       +
+                     }                                                                         +
+                   ]                                                                           +
+                 },                                                                            +
+                 {                                                                             +
+                   "Node Type": "Hash",                                                        +
+                   "Parent Relationship": "Inner",                                             +
+                   "Slice": 2,                                                                 +
+                   "Segments": 1,                                                              +
+                   "Gang Type": "primary reader",                                              +
+                   "Startup Cost": 6.02,                                                       +
+                   "Total Cost": 6.02,                                                         +
+                   "Plan Rows": 44,                                                            +
+                   "Plan Width": 16,                                                           +
+                   "Actual Startup Time": 0.009,                                               +
+                   "Actual Total Time": 0.009,                                                 +
+                   "Actual Rows": 5,                                                           +
+                   "Actual Loops": 1,                                                          +
+                   "Plans": [                                                                  +
+                     {                                                                         +
+                       "Node Type": "Redistribute Motion",                                     +
+                       "Senders": 1,                                                           +
+                       "Receivers": 1,                                                         +
+                       "Parent Relationship": "Outer",                                         +
+                       "Slice": 1,                                                             +
+                       "Segments": 1,                                                          +
+                       "Gang Type": "primary reader",                                          +
+                       "Startup Cost": 0.00,                                                   +
+                       "Total Cost": 6.02,                                                     +
+                       "Plan Rows": 44,                                                        +
+                       "Plan Width": 16,                                                       +
+                       "Actual Startup Time": 0.006,                                           +
+                       "Actual Total Time": 0.007,                                             +
+                       "Actual Rows": 5,                                                       +
+                       "Actual Loops": 1,                                                      +
+                       "Hash Key": "knows.k_person2id",                                        +
+                       "Plans": [                                                              +
+                         {                                                                     +
+                           "Node Type": "Index Scan",                                          +
+                           "Parent Relationship": "Outer",                                     +
+                           "Slice": 1,                                                         +
+                           "Segments": 1,                                                      +
+                           "Gang Type": "primary reader",                                      +
+                           "Scan Direction": "Forward",                                        +
+                           "Index Name": "knows_person1id",                                    +
+                           "Relation Name": "knows",                                           +
+                           "Alias": "knows",                                                   +
+                           "Startup Cost": 0.00,                                               +
+                           "Total Cost": 6.02,                                                 +
+                           "Plan Rows": 44,                                                    +
+                           "Plan Width": 16,                                                   +
+                           "Actual Startup Time": 0.304,                                       +
+                           "Actual Total Time": 0.308,                                         +
+                           "Actual Rows": 5,                                                   +
+                           "Actual Loops": 1,                                                  +
+                           "Index Cond": "(k_person1id = 933)",                                +
+                           "Rows Removed by Index Recheck": 0                                  +
+                         }                                                                     +
+                       ]                                                                       +
+                     }                                                                         +
+                   ]                                                                           +
+                 }                                                                             +
+               ]                                                                               +
+             }                                                                                 +
+           ]                                                                                   +
+         }                                                                                     +
+       ]                                                                                       +
+     },                                                                                        +
+     "Planning Time": 319.023,                                                                 +
+     "Triggers": [                                                                             +
+     ],                                                                                        +
+     "Slice statistics": [                                                                     +
+       {                                                                                       +
+         "Slice": 0,                                                                           +
+         "Executor Memory": 294064                                                             +
+       },                                                                                      +
+       {                                                                                       +
+         "Slice": 1,                                                                           +
+         "Executor Memory": 93536                                                              +
+       },                                                                                      +
+       {                                                                                       +
+         "Slice": 2,                                                                           +
+         "Executor Memory": 2276464,                                                           +
+         "Work Maximum Memory": 65768                                                          +
+       }                                                                                       +
+     ],                                                                                        +
+     "Statement statistics": {                                                                 +
+       "Memory used": 128000                                                                   +
+     },                                                                                        +
+     "Settings": {                                                                             +
+       "Optimizer": "Pivotal Optimizer (GPORCA)"                                               +
+     },                                                                                        +
+     "Execution Time": 24.940                                                                  +
+   }                                                                                           +
+ ]
+(1 row)
+

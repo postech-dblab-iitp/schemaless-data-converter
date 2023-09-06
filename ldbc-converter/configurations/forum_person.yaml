@@ -1,0 +1,14 @@
+table_name: forum_person
+schema_file: ./schemas/forum_person.yaml
+data_file_path: ./original-dataset/dynamic/forum_hasMember_person_0_0.csv
+output_folders_path: ./generated-dataset/dynamic
+partitions: [p1, p2]
+p1:
+  portion: 50
+  column_removing:
+    activate: false
+p2:
+  portion: 50
+  column_removing:
+    activate: true
+    columns: [fp_joindate]

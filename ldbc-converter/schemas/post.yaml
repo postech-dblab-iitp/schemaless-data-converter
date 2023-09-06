@@ -1,0 +1,26 @@
+columns: [
+  m_messageid,
+  m_ps_imagefile,
+  m_creationdate,
+  m_locationip,
+  m_browserused,
+  m_ps_language,
+  m_content,
+  m_length,
+  m_creatorid,
+  m_ps_forumid,
+  m_locationid
+]
+m_messageid: bigint not null
+m_ps_imagefile: varchar
+m_creationdate: timestamp with time zone not null
+m_locationip: varchar not null
+m_browserused: varchar not null
+m_ps_language: varchar
+m_content: text
+m_length: int not null
+m_creatorid: bigint not null
+m_ps_forumid: bigint
+m_locationid: bigint not null
+primary_keys: []
+create_option: 

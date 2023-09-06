@@ -1,0 +1,228 @@
+title: lineitem_7
+benchmark: tpch
+table_name: lineitem
+schema_file: ./schemas/tpch/lineitem.yaml
+data_file_path: ./data/tpch/lineitem.csv
+queries_path: ./queries/tpch
+output_folders_path: ./results
+partitions: [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11]
+p1:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_COMMITDATE,
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p2:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [ 
+      L_PARTKEY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_COMMITDATE,
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p3:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY,  
+      L_DISCOUNT, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_COMMITDATE,
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p4:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_COMMITDATE,
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p5:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_COMMITDATE,
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p6:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_TAX, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_COMMITDATE,
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p7:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_SHIPDATE, 
+      L_COMMITDATE,
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p8:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_COMMITDATE,
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p9:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p10:
+  portion: 5
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_COMMITDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false
+p11:
+  portion: 5
+  column_removing:
+    activate: true
+    columns: [
+      L_PARTKEY, 
+      L_QUANTITY, 
+      L_EXTENDEDPRICE, 
+      L_DISCOUNT, 
+      L_TAX, 
+      L_RETURNFLAG, 
+      L_LINESTATUS, 
+      L_SHIPDATE, 
+      L_RECEIPTDATE,
+      L_SHIPINSTRUCT,
+      L_SHIPMODE,
+      L_COMMENT
+    ]
+  type_conversion:
+    activate: false

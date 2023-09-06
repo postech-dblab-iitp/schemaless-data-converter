@@ -1,0 +1,10 @@
+columns: [
+  fp_forumid,
+  fp_personid,
+  fp_joindate
+]
+fp_forumid: bigint not null
+fp_personid: bigint not null
+fp_joindate: timestamp with time zone not null
+primary_keys: [fp_forumid, fp_personid]
+create_option:

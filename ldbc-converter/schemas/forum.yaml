@@ -1,0 +1,12 @@
+columns: [
+  f_forumid,
+  f_title,
+  f_creationdate,
+  f_moderatorid
+]
+f_forumid: bigint not null
+f_title: varchar not null
+f_creationdate: timestamp with time zone not null
+f_moderatorid: bigint not null
+primary_keys: [f_forumid]
+create_option:

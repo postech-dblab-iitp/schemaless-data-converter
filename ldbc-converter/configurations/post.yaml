@@ -1,0 +1,55 @@
+table_name: post
+schema_file: ./schemas/post.yaml
+data_file_path: ./original-dataset/dynamic/post_0_0.csv
+output_folders_path: ./generated-dataset/dynamic
+partitions: [p1, p2, p3, p4, p5]
+p1:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_length,
+      m_creatorid,
+      m_ps_forumid,
+      m_locationid
+    ]
+p2:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_content,
+      m_creatorid,
+      m_ps_forumid,
+      m_locationid
+    ]
+p3:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_content,
+      m_length,
+      m_ps_forumid,
+      m_locationid
+    ]
+p4:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_content,
+      m_length,
+      m_creatorid,
+      m_locationid
+    ]
+p5:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_content,
+      m_length,
+      m_creatorid,
+      m_ps_forumid,
+    ]

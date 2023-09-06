@@ -1,0 +1,56 @@
+table_name: person
+schema_file: ./schemas/person.yaml
+data_file_path: ./original-dataset/dynamic/person_0_0.csv
+output_folders_path: ./generated-dataset/dynamic
+partitions: [p1, p2, p3, p4, p5]
+p1:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      p_lastname,
+      p_gender,
+      p_birthday,
+      p_creationdate,
+    ]
+p2:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      p_firstname,
+      p_gender,
+      p_birthday,
+      p_creationdate,
+    ]
+p3:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      p_firstname,
+      p_lastname,
+      p_birthday,
+      p_creationdate,
+    ]
+p4:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      p_firstname,
+      p_lastname,
+      p_gender,
+      p_creationdate,
+    ]
+p5:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      p_firstname,
+      p_lastname,
+      p_gender,
+      p_birthday,
+    ]
+

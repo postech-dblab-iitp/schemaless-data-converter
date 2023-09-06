@@ -1,0 +1,14 @@
+title: lineitem_1
+benchmark: tpch
+table_name: lineitem
+schema_file: ./schemas/tpch/lineitem.yaml
+data_file_path: ./data/tpch/lineitem.csv
+queries_path: ./queries/tpch
+output_folders_path: ./results
+partitions: [p1]
+p1:
+  portion: 100
+  column_removing:
+    activate: false
+  type_conversion:
+    activate: false

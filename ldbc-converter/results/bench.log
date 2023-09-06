@@ -1,0 +1,91 @@
+2023-08-06 08:57:04 [1691312224] : preparing LDBC database
+2023-08-06 08:57:04 [1691312224] :   loading data
+2023-08-06 08:57:04 [1691312224] :   schema constraints
+2023-08-06 08:57:04 [1691312224] :   creating foreign keys
+2023-08-06 08:57:04 [1691312224] :   analyzing
+2023-08-06 08:57:25 [1691312245] : preparing LDBC database
+2023-08-06 08:57:25 [1691312245] :   loading data
+2023-08-06 08:57:25 [1691312245] :   schema constraints
+2023-08-06 08:57:25 [1691312245] :   creating foreign keys
+2023-08-06 08:57:25 [1691312245] :   analyzing
+2023-08-06 08:57:43 [1691312263] : preparing LDBC database
+2023-08-06 08:57:43 [1691312263] :   loading data
+2023-08-06 08:57:43 [1691312263] :   schema constraints
+2023-08-06 08:57:43 [1691312263] :   creating foreign keys
+2023-08-06 08:57:43 [1691312263] :   analyzing
+2023-08-06 08:58:13 [1691312293] : preparing LDBC database
+2023-08-06 08:58:13 [1691312293] :   loading data
+2023-08-06 08:58:13 [1691312293] :   schema constraints
+2023-08-06 08:58:13 [1691312293] :   creating foreign keys
+2023-08-06 08:58:13 [1691312293] :   analyzing
+2023-08-06 08:58:31 [1691312311] : preparing LDBC database
+2023-08-06 08:58:31 [1691312311] :   loading data
+2023-08-06 08:58:31 [1691312311] :   schema constraints
+2023-08-06 08:58:31 [1691312311] :   creating foreign keys
+2023-08-06 08:58:31 [1691312311] :   analyzing
+2023-08-06 08:59:22 [1691312362] : preparing LDBC database
+2023-08-06 08:59:22 [1691312362] :   loading data
+2023-08-06 08:59:22 [1691312362] :   schema constraints
+2023-08-06 08:59:23 [1691312363] :   creating foreign keys
+2023-08-06 08:59:23 [1691312363] :   analyzing
+2023-08-06 09:02:54 [1691312574] : preparing LDBC database
+2023-08-06 09:02:54 [1691312574] :   loading data
+2023-08-06 09:02:54 [1691312574] :   schema constraints
+2023-08-06 09:02:55 [1691312575] :   creating foreign keys
+2023-08-06 09:02:55 [1691312575] :   analyzing
+2023-08-06 09:04:18 [1691312658] : preparing LDBC database
+2023-08-06 09:04:18 [1691312658] :   loading data
+2023-08-06 09:04:18 [1691312658] :   schema constraints
+2023-08-06 09:04:19 [1691312659] :   creating foreign keys
+2023-08-06 09:04:19 [1691312659] :   analyzing
+2023-08-06 09:05:25 [1691312725] : preparing LDBC database
+2023-08-06 09:05:26 [1691312726] :   loading data
+2023-08-06 09:05:38 [1691312738] :   schema constraints
+2023-08-06 09:05:42 [1691312742] :   creating foreign keys
+2023-08-06 09:05:42 [1691312742] :   analyzing
+2023-08-06 09:22:24 [1691313744] : preparing LDBC database
+2023-08-06 09:22:24 [1691313744] :   loading data
+2023-08-06 09:22:43 [1691313763] :   schema constraints
+2023-08-06 09:23:16 [1691313796] :   creating foreign keys
+2023-08-06 09:23:17 [1691313797] :   analyzing
+2023-08-06 09:28:40 [1691314120] : preparing LDBC database
+2023-08-06 09:28:41 [1691314121] :   loading data
+2023-08-06 09:29:00 [1691314140] :   schema constraints
+2023-08-06 09:29:36 [1691314176] :   analyzing
+2023-08-06 09:33:03 [1691314383] : preparing LDBC database
+2023-08-06 09:33:04 [1691314384] :   loading data
+2023-08-06 09:33:19 [1691314399] :   schema constraints
+2023-08-06 09:33:55 [1691314435] :   analyzing
+2023-08-06 11:45:51 [1691322351] : preparing LDBC database
+2023-08-06 11:45:51 [1691322351] :   loading data
+2023-08-06 11:46:11 [1691322371] :   schema constraints
+2023-08-06 11:46:47 [1691322407] :   analyzing
+2023-08-06 12:12:02 [1691323922] : preparing LDBC database
+2023-08-06 12:12:03 [1691323923] :   loading data
+2023-08-06 12:12:19 [1691323939] :   schema constraints
+2023-08-06 12:12:54 [1691323974] :   analyzing
+2023-08-06 12:19:33 [1691324373] : preparing LDBC database
+2023-08-06 12:19:34 [1691324374] :   loading data
+2023-08-06 12:19:53 [1691324393] :   schema constraints
+2023-08-06 12:20:30 [1691324430] :   analyzing
+2023-08-06 12:33:57 [1691325237] : preparing LDBC database
+2023-08-06 12:34:07 [1691325247] : preparing LDBC database
+2023-08-06 12:34:07 [1691325247] :   loading data
+2023-08-06 12:34:25 [1691325265] :   schema constraints
+2023-08-06 12:35:02 [1691325302] :   analyzing
+2023-08-06 12:37:24 [1691325444] : preparing LDBC database
+2023-08-06 12:37:25 [1691325445] :   loading data
+2023-08-06 12:37:45 [1691325465] :   schema constraints
+2023-08-06 12:38:22 [1691325502] :   analyzing
+2023-08-06 12:43:14 [1691325794] : preparing LDBC database
+2023-08-06 12:43:14 [1691325794] :   loading data
+2023-08-06 12:43:35 [1691325815] :   schema constraints
+2023-08-06 12:44:10 [1691325850] :   analyzing
+2023-08-06 13:26:38 [1691328398] : preparing LDBC database
+2023-08-06 13:26:38 [1691328398] :   loading data
+2023-08-06 13:26:39 [1691328399] :   schema constraints
+2023-08-06 13:26:39 [1691328399] :   analyzing
+2023-08-06 13:28:16 [1691328496] : preparing LDBC database
+2023-08-06 13:28:16 [1691328496] :   loading data
+2023-08-06 13:28:39 [1691328519] :   schema constraints
+2023-08-06 13:29:39 [1691328579] :   analyzing

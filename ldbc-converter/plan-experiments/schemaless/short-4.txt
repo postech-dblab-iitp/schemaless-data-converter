@@ -1,0 +1,508 @@
+                                    QUERY PLAN                                    
+----------------------------------------------------------------------------------
+ [                                                                               +
+   {                                                                             +
+     "Plan": {                                                                   +
+       "Node Type": "Gather Motion",                                             +
+       "Senders": 1,                                                             +
+       "Receivers": 1,                                                           +
+       "Slice": 1,                                                               +
+       "Segments": 1,                                                            +
+       "Gang Type": "primary reader",                                            +
+       "Startup Cost": 0.00,                                                     +
+       "Total Cost": 4588.12,                                                    +
+       "Plan Rows": 10,                                                          +
+       "Plan Width": 16,                                                         +
+       "Actual Startup Time": 859.900,                                           +
+       "Actual Total Time": 859.901,                                             +
+       "Actual Rows": 1,                                                         +
+       "Actual Loops": 1,                                                        +
+       "Plans": [                                                                +
+         {                                                                       +
+           "Node Type": "Result",                                                +
+           "Parent Relationship": "Outer",                                       +
+           "Slice": 1,                                                           +
+           "Segments": 1,                                                        +
+           "Gang Type": "primary reader",                                        +
+           "Startup Cost": 0.00,                                                 +
+           "Total Cost": 4588.12,                                                +
+           "Plan Rows": 10,                                                      +
+           "Plan Width": 16,                                                     +
+           "Actual Startup Time": 568.166,                                       +
+           "Actual Total Time": 857.104,                                         +
+           "Actual Rows": 1,                                                     +
+           "Actual Loops": 1,                                                    +
+           "Plans": [                                                            +
+             {                                                                   +
+               "Node Type": "Append",                                            +
+               "Parent Relationship": "Outer",                                   +
+               "Slice": 1,                                                       +
+               "Segments": 1,                                                    +
+               "Gang Type": "primary reader",                                    +
+               "Startup Cost": 0.00,                                             +
+               "Total Cost": 4588.12,                                            +
+               "Plan Rows": 10,                                                  +
+               "Plan Width": 51,                                                 +
+               "Actual Startup Time": 568.164,                                   +
+               "Actual Total Time": 857.100,                                     +
+               "Actual Rows": 1,                                                 +
+               "Actual Loops": 1,                                                +
+               "Plans": [                                                        +
+                 {                                                               +
+                   "Node Type": "Result",                                        +
+                   "Parent Relationship": "Member",                              +
+                   "Slice": 1,                                                   +
+                   "Segments": 1,                                                +
+                   "Gang Type": "primary reader",                                +
+                   "Startup Cost": 0.00,                                         +
+                   "Total Cost": 2241.89,                                        +
+                   "Plan Rows": 5,                                               +
+                   "Plan Width": 51,                                             +
+                   "Actual Startup Time": 568.163,                               +
+                   "Actual Total Time": 573.831,                                 +
+                   "Actual Rows": 1,                                             +
+                   "Actual Loops": 1,                                            +
+                   "Plans": [                                                    +
+                     {                                                           +
+                       "Node Type": "Append",                                    +
+                       "Parent Relationship": "Outer",                           +
+                       "Slice": 1,                                               +
+                       "Segments": 1,                                            +
+                       "Gang Type": "primary reader",                            +
+                       "Startup Cost": 0.00,                                     +
+                       "Total Cost": 2241.89,                                    +
+                       "Plan Rows": 5,                                           +
+                       "Plan Width": 51,                                         +
+                       "Actual Startup Time": 568.162,                           +
+                       "Actual Total Time": 573.829,                             +
+                       "Actual Rows": 1,                                         +
+                       "Actual Loops": 1,                                        +
+                       "Plans": [                                                +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 449.97,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 51,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "post_p1",                       +
+                               "Alias": "post_p1",                               +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 449.97,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 51,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         },                                                      +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 447.65,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 34,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "post_p2",                       +
+                               "Alias": "post_p2",                               +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 447.65,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 26,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         },                                                      +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 448.09,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 34,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "post_p3",                       +
+                               "Alias": "post_p3",                               +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 448.09,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 26,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         },                                                      +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 448.09,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 34,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "post_p4",                       +
+                               "Alias": "post_p4",                               +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 448.09,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 26,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         },                                                      +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 448.09,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 34,                                     +
+                           "Actual Startup Time": 90.064,                        +
+                           "Actual Total Time": 95.730,                          +
+                           "Actual Rows": 1,                                     +
+                           "Actual Loops": 1,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "post_p5",                       +
+                               "Alias": "post_p5",                               +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 448.09,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 26,                                 +
+                               "Actual Startup Time": 90.062,                    +
+                               "Actual Total Time": 95.728,                      +
+                               "Actual Rows": 1,                                 +
+                               "Actual Loops": 1,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         }                                                       +
+                       ]                                                         +
+                     }                                                           +
+                   ]                                                             +
+                 },                                                              +
+                 {                                                               +
+                   "Node Type": "Result",                                        +
+                   "Parent Relationship": "Member",                              +
+                   "Slice": 1,                                                   +
+                   "Segments": 1,                                                +
+                   "Gang Type": "primary reader",                                +
+                   "Startup Cost": 0.00,                                         +
+                   "Total Cost": 2346.22,                                        +
+                   "Plan Rows": 5,                                               +
+                   "Plan Width": 50,                                             +
+                   "Actual Startup Time": 0.000,                                 +
+                   "Actual Total Time": 0.000,                                   +
+                   "Actual Rows": 0,                                             +
+                   "Actual Loops": 0,                                            +
+                   "Plans": [                                                    +
+                     {                                                           +
+                       "Node Type": "Append",                                    +
+                       "Parent Relationship": "Outer",                           +
+                       "Slice": 1,                                               +
+                       "Segments": 1,                                            +
+                       "Gang Type": "primary reader",                            +
+                       "Startup Cost": 0.00,                                     +
+                       "Total Cost": 2346.22,                                    +
+                       "Plan Rows": 5,                                           +
+                       "Plan Width": 58,                                         +
+                       "Actual Startup Time": 0.000,                             +
+                       "Actual Total Time": 0.000,                               +
+                       "Actual Rows": 0,                                         +
+                       "Actual Loops": 0,                                        +
+                       "Plans": [                                                +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 468.66,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 58,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "comment_p1",                    +
+                               "Alias": "comment_p1",                            +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 468.66,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 42,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         },                                                      +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 469.56,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 58,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "comment_p2",                    +
+                               "Alias": "comment_p2",                            +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 469.56,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 42,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         },                                                      +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 469.33,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 58,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "comment_p3",                    +
+                               "Alias": "comment_p3",                            +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 469.33,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 42,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         },                                                      +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 469.33,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 58,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "comment_p4",                    +
+                               "Alias": "comment_p4",                            +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 469.33,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 50,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         },                                                      +
+                         {                                                       +
+                           "Node Type": "Result",                                +
+                           "Parent Relationship": "Member",                      +
+                           "Slice": 1,                                           +
+                           "Segments": 1,                                        +
+                           "Gang Type": "primary reader",                        +
+                           "Startup Cost": 0.00,                                 +
+                           "Total Cost": 469.33,                                 +
+                           "Plan Rows": 1,                                       +
+                           "Plan Width": 58,                                     +
+                           "Actual Startup Time": 0.000,                         +
+                           "Actual Total Time": 0.000,                           +
+                           "Actual Rows": 0,                                     +
+                           "Actual Loops": 0,                                    +
+                           "Plans": [                                            +
+                             {                                                   +
+                               "Node Type": "Seq Scan",                          +
+                               "Parent Relationship": "Outer",                   +
+                               "Slice": 1,                                       +
+                               "Segments": 1,                                    +
+                               "Gang Type": "primary reader",                    +
+                               "Relation Name": "comment_p5",                    +
+                               "Alias": "comment_p5",                            +
+                               "Startup Cost": 0.00,                             +
+                               "Total Cost": 469.33,                             +
+                               "Plan Rows": 1,                                   +
+                               "Plan Width": 50,                                 +
+                               "Actual Startup Time": 0.000,                     +
+                               "Actual Total Time": 0.000,                       +
+                               "Actual Rows": 0,                                 +
+                               "Actual Loops": 0,                                +
+                               "Filter": "(m_messageid = 2199029886840::bigint)",+
+                               "Rows Removed by Filter": 0                       +
+                             }                                                   +
+                           ]                                                     +
+                         }                                                       +
+                       ]                                                         +
+                     }                                                           +
+                   ]                                                             +
+                 }                                                               +
+               ]                                                                 +
+             }                                                                   +
+           ]                                                                     +
+         }                                                                       +
+       ]                                                                         +
+     },                                                                          +
+     "Planning Time": 431.677,                                                   +
+     "Triggers": [                                                               +
+     ],                                                                          +
+     "Slice statistics": [                                                       +
+       {                                                                         +
+         "Slice": 0,                                                             +
+         "Executor Memory": 287920                                               +
+       },                                                                        +
+       {                                                                         +
+         "Slice": 1,                                                             +
+         "Executor Memory": 287920                                               +
+       }                                                                         +
+     ],                                                                          +
+     "Statement statistics": {                                                   +
+       "Memory used": 128000                                                     +
+     },                                                                          +
+     "Settings": {                                                               +
+       "Optimizer": "Pivotal Optimizer (GPORCA)"                                 +
+     },                                                                          +
+     "Execution Time": 870.200                                                   +
+   }                                                                             +
+ ]
+(1 row)
+

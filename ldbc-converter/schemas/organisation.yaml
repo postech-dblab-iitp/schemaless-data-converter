@@ -1,0 +1,14 @@
+columns: [
+  o_organisationid,
+  o_type,
+  o_name,
+  o_url,
+  o_placeid
+]
+o_organisationid: bigint not null
+o_type: varchar not null
+o_name: varchar not null
+o_url: varchar not null
+o_placeid: bigint not null
+primary_keys: [o_organisationid]
+create_option:

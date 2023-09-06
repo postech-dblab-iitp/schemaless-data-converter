@@ -1,0 +1,55 @@
+table_name: comment
+schema_file: ./schemas/comment.yaml
+data_file_path: ./original-dataset/dynamic/comment_0_0.csv
+output_folders_path: ./generated-dataset/dynamic
+partitions: [p1, p2, p3, p4, p5]
+p1:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_creatorid,
+      m_locationid,
+      m_replyof_post,
+      m_replyof_comment
+    ]
+p2:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_length,
+      m_locationid,
+      m_replyof_post,
+      m_replyof_comment
+    ]
+p3:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+    m_length,
+    m_creatorid,
+    m_replyof_post,
+    m_replyof_comment
+  ]
+p4:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_length,
+      m_creatorid,
+      m_locationid,
+      m_replyof_comment
+    ]
+p5:
+  portion: 20
+  column_removing:
+    activate: true
+    columns: [
+      m_length,
+      m_creatorid,
+      m_locationid,
+      m_replyof_post,
+    ]

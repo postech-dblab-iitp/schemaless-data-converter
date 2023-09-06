@@ -1,0 +1,12 @@
+columns: [
+  tc_tagclassid,
+  tc_name,
+  tc_url,
+  tc_subclassoftagclassid
+]
+tc_tagclassid: bigint not null
+tc_name: varchar not null
+tc_url: varchar not null
+tc_subclassoftagclassid: bigint
+primary_keys: [tc_tagclassid]
+create_option:

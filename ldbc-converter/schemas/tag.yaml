@@ -1,0 +1,12 @@
+columns: [
+  t_tagid,
+  t_name,
+  t_url,
+  t_tagclassid
+]
+t_tagid: bigint not null
+t_name: varchar not null
+t_url: varchar not null
+t_tagclassid: bigint not null
+primary_keys: [t_tagid]
+create_option:
