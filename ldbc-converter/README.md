@@ -40,6 +40,5 @@ partitions: <partition names, e.g., [p1, p2, p3]>
 
 ## Usage
 ```
-// to generate files
 python dataset-generator.py <configuration file path> <output format; csv or json>
 ```
