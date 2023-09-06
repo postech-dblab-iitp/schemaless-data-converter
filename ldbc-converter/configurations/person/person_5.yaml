@@ -8,49 +8,39 @@ p1:
   column_removing:
     activate: true
     columns: [
-      p_lastname,
-      p_gender,
-      p_birthday,
-      p_creationdate,
+      p_browserused,
+      p_placeid
     ]
 p2:
   portion: 20
   column_removing:
     activate: true
     columns: [
-      p_firstname,
-      p_gender,
-      p_birthday,
-      p_creationdate,
+      p_locationip,
+      p_browserused
     ]
 p3:
   portion: 20
   column_removing:
     activate: true
     columns: [
-      p_firstname,
-      p_lastname,
-      p_birthday,
       p_creationdate,
+      p_locationip
     ]
 p4:
   portion: 20
   column_removing:
     activate: true
     columns: [
-      p_firstname,
-      p_lastname,
-      p_gender,
-      p_creationdate,
+      p_birthday,
+      p_creationdate
     ]
 p5:
   portion: 20
   column_removing:
     activate: true
     columns: [
-      p_firstname,
-      p_lastname,
       p_gender,
-      p_birthday,
+      p_birthday
     ]
 

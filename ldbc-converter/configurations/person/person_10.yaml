@@ -1,0 +1,88 @@
+table_name: person
+schema_file: ./schemas/person.yaml
+data_file_path: ./original-dataset/dynamic/person_0_0.csv
+output_folders_path: ./generated-dataset/dynamic
+partitions: [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]
+p1:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_browserused,
+      p_placeid
+    ]
+p2:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_locationip,
+      p_browserused,
+    ]
+p3:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_creationdate,
+      p_locationip,
+    ]
+p4:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_birthday,
+      p_creationdate,
+    ]
+p5:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_gender,
+      p_birthday,
+    ]
+p6:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_lastname,
+      p_gender,
+    ]
+p7:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_firstname,
+      p_lastname,
+    ]
+p8:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_locationip,
+      p_browserused,
+      p_placeid
+    ]
+p9:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_birthday,
+      p_creationdate,
+      p_locationip,
+    ]
+p10:
+  portion: 10
+  column_removing:
+    activate: true
+    columns: [
+      p_lastname,
+      p_gender,
+      p_birthday,
+    ]

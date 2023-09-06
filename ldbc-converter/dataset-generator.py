@@ -207,7 +207,6 @@ with open(configuration_file_path, "r") as configuration_file:
             if os.path.exists(output_file_path):
                 os.remove(output_file_path)
             
-            
             print('Exporting tuples...')
             with open(output_file_path, 'w') as jsonfile:
                 for tuple_dict in tuple_dicts:

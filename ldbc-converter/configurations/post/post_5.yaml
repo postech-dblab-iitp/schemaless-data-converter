@@ -1,6 +1,6 @@
-table_name: comment
-schema_file: ./schemas/comment.yaml
-data_file_path: ./original-dataset/dynamic/comment_0_0.csv
+table_name: post
+schema_file: ./schemas/post.yaml
+data_file_path: ./original-dataset/dynamic/post_0_0.csv
 output_folders_path: ./generated-dataset/dynamic
 partitions: [p1, p2, p3, p4, p5]
 p1:
@@ -9,47 +9,42 @@ p1:
     activate: true
     columns: [
       m_creatorid,
-      m_locationid,
-      m_replyof_post,
-      m_replyof_comment
+      m_ps_forumid,
+      m_locationid
     ]
 p2:
   portion: 20
   column_removing:
     activate: true
     columns: [
+      m_content,
       m_length,
-      m_locationid,
-      m_replyof_post,
-      m_replyof_comment
+      m_creatorid,
     ]
 p3:
   portion: 20
   column_removing:
     activate: true
     columns: [
-    m_length,
-    m_creatorid,
-    m_replyof_post,
-    m_replyof_comment
-  ]
+      m_browserused,
+      m_ps_language,
+      m_content,
+    ]
 p4:
   portion: 20
   column_removing:
     activate: true
     columns: [
-      m_length,
-      m_creatorid,
-      m_locationid,
-      m_replyof_comment
+      m_creationdate,
+      m_locationip,
+      m_browserused,
     ]
 p5:
   portion: 20
   column_removing:
     activate: true
     columns: [
-      m_length,
-      m_creatorid,
-      m_locationid,
-      m_replyof_post,
+      m_ps_imagefile,
+      m_creationdate,
+      m_locationip,
     ]

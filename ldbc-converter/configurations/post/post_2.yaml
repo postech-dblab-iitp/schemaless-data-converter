@@ -1,0 +1,23 @@
+table_name: post
+schema_file: ./schemas/post.yaml
+data_file_path: ./original-dataset/dynamic/post_0_0.csv
+output_folders_path: ./generated-dataset/dynamic
+partitions: [p1, p2]
+p1:
+  portion: 50
+  column_removing:
+    activate: true
+    columns: [
+      m_creatorid,
+      m_ps_forumid,
+      m_locationid
+    ]
+p2:
+  portion: 50
+  column_removing:
+    activate: true
+    columns: [
+      m_ps_language,
+      m_content,
+      m_length,
+    ]

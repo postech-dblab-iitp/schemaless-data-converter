@@ -1,0 +1,22 @@
+table_name: person
+schema_file: ./schemas/person.yaml
+data_file_path: ./original-dataset/dynamic/person_0_0.csv
+output_folders_path: ./generated-dataset/dynamic
+partitions: [p1, p2]
+p1:
+  portion: 50
+  column_removing:
+    activate: true
+    columns: [
+      p_browserused,
+      p_placeid
+    ]
+p2:
+  portion: 50
+  column_removing:
+    activate: true
+    columns: [
+      p_creationdate,
+      p_locationip,
+    ]
+
